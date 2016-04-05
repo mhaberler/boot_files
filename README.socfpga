@@ -1,0 +1,34 @@
+Contents:
+
+the u-boot loader for the Terasic DE0 Nano board:
+-------------------------------------------------
+source: https://github.com/mhaberler/u-boot/tree/v2016.03-terasic-de0-nano-machinekit-squashed
+
+build:
+make distclean
+make  socfpga_de0_nano_soc_defconfig
+make
+the u-boot binary used is u-boot-with-spl.sfp
+
+
+the device tree dtb/dts file:
+-----------------------------
+
+start from https://github.com/mhaberler/linux-socfpga/commits/socfpga-3.10-ltsi-rt-machinekit
+use socfpga_defconfig
+make dtbs
+the dt* files are:
+
+arch/arm/boot/dts/socfpga_cyclone5.*
+arch/arm/boot/dts/socfpga.dtsi
+
+
+FPGA bitfile:
+-------------
+built with Charles' Quartus Virtualbox appliance: http://deb.machinekit.io/uploads/vbox-quartus/
+
+source and instructions:
+https://github.com/cdsteinkuehler/mksocfpga/commit/6a85d84759140f853d79c3d8b11bd85ce2e24935
+
+md5sum soc_system.rbf
+87918ce353b35466f092933f03aa3d8b  soc_system.rbf
