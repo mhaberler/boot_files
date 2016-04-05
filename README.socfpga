@@ -22,6 +22,9 @@ the dt* files are:
 arch/arm/boot/dts/socfpga_cyclone5.*
 arch/arm/boot/dts/socfpga.dtsi
 
+After editing the .dts file, run make to rebuild the .dtb
+
+
 
 FPGA bitfile:
 -------------
@@ -32,3 +35,61 @@ https://github.com/cdsteinkuehler/mksocfpga/commit/6a85d84759140f853d79c3d8b11bd
 
 md5sum soc_system.rbf
 87918ce353b35466f092933f03aa3d8b  soc_system.rbf
+
+
+
+
+example boot log:
+-----------------
+
+U-Boot SPL 2016.03-00001-ge3c66fe (Apr 05 2016 - 14:43:57)
+drivers/ddr/altera/sequencer.c: Preparing to start memory calibration
+drivers/ddr/altera/sequencer.c: CALIBRATION PASSED
+drivers/ddr/altera/sequencer.c: Calibration complete
+Trying to boot from MMC
+ 
+ 
+U-Boot 2016.03-00001-ge3c66fe (Apr 05 2016 - 14:43:57 +0200)
+ 
+CPU:   Altera SoCFPGA Platform
+FPGA:  Altera Cyclone V, SE/A4 or SX/C4, version 0x0
+BOOT:  SD/MMC Internal Transceiver (3.0V)
+       Watchdog enabled
+I2C:   ready
+DRAM:  1 GiB
+MMC:   dwmmc0@ff704000: 0
+In:    serial
+Out:   serial
+Err:   serial
+Model: Terasic DE0-Nano(Atlas)
+Net:   
+Error: ethernet@ff702000 address not set.
+No ethernet found.
+Hit any key to stop autoboot:  0 
+333 bytes read in 23 ms (13.7 KiB/s)
+Loaded environment from uEnv.txt
+Importing environment from /boot/uEnv.txt ...
+1514640 bytes read in 118 ms (12.2 MiB/s)
+Running uenvcmd: echo fdt=${fdtimage} rbf=${fpgaimage} boot=${bootimage}; ...
+fdt=socfpga_cyclone5.dtb rbf=soc_system.rbf boot=vmlinuz-3.10.37-ltsi-rt37-05841-g81c6be3
+1514640 bytes read in 117 ms (12.3 MiB/s)
+3552688 bytes read in 223 ms (15.2 MiB/s)
+19742 bytes read in 40 ms (481.4 KiB/s)
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait earlyprintk
+Kernel image @ 0x1000000 [ 0x000000 - 0x3635b0 ]
+## Flattened Device Tree blob at 00000100
+   Booting using the fdt blob at 0x000100
+   Loading Device Tree to 03ff8000, end 03fffd1d ... OK
+ 
+Starting kernel ...
+ 
+Booting Linux on physical CPU 0x0
+Initializing cgroup subsys cpuset
+Linux version 3.10.37-ltsi-rt37-05841-g81c6be3 (mah@cubox-i) (gcc version 4.9.2 (Debian 4.9.2-10) ) #1 SMP PREEMPT RT Fri Mar 25 08:59:47 CET 2016
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=10c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+Machine: Altera SOCFPGA, model: Altera SOCFPGA Cyclone V
+Memory policy: ECC disabled, Data cache writealloc
+PERCPU: Embedded 9 pages/cpu @80f89000 s12608 r8192 d16064 u36864
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 260096
+Kernel command line: console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootwait earlyprintk
