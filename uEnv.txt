@@ -1,0 +1,11 @@
+# from boot_files git repo
+fdtimage=socfpga_cyclone5.dtb
+fpgaimage=soc_system.rbf
+bootimage=vmlinuz-3.10.37-ltsi-rt37-05841-g81c6be3
+
+# demo-exercise uenvcmd - show which files are being loaded:
+uenvcmd=echo "fdt=${fdtimage} rbf=${fpgaimage} boot=${bootimage}";
+
+extra_bootargs="earlyprintk"
+uname_r=3.10.37-ltsi-rt37-05841-g81c6be3
+
