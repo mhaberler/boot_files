@@ -1,0 +1,8 @@
+
+uname_r=3.10.37-ltsi-rt37-05841-g81c6be3
+
+fdtimage=socfpga.dtb
+fpgaimage=socfpga.rbf
+bootimage=vmlinuz-3.10.37-ltsi-rt37-05841-g81c6be3
+ 
+
